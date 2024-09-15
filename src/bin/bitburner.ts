@@ -1,13 +1,13 @@
 /** All netscript definitions */
 
 /** @public */
-interface HP {
+ export interface HP {
     current: number;
     max: number;
   }
   
   /** @public */
-  interface Skills {
+  export interface Skills {
     hacking: number;
     strength: number;
     defense: number;
@@ -31,7 +31,7 @@ interface HP {
   type FilenameOrPID = number | string;
   
   /** @public */
-  interface Person {
+  export interface Person {
     hp: HP;
     skills: Skills;
     exp: Skills;
@@ -40,7 +40,7 @@ interface HP {
   }
   
   /** @public */
-  interface Player extends Person {
+  export interface Player extends Person {
     money: number;
     numPeopleKilled: number;
     entropy: number;
@@ -52,7 +52,7 @@ interface HP {
   }
   
   /** @public */
-  interface SleevePerson extends Person {
+  export interface SleevePerson extends Person {
     /** Number 0-100 Experience earned and shared is multiplied with shock% before sync% */
     shock: number;
     /** Number 1-100 Experience earned by this sleeve and shared with the player is multiplied with sync% after shock% */
@@ -65,7 +65,7 @@ interface HP {
   
   /** Various info about resets
    * @public */
-  interface ResetInfo {
+  export interface ResetInfo {
     /** Numeric timestamp (from Date.now()) of last augmentation reset */
     lastAugReset: number;
     /** Numeric timestamp (from Date.now()) of last BitNode reset */
@@ -81,7 +81,7 @@ interface HP {
   }
   
   /** @public */
-  interface MoneySource {
+  export interface MoneySource {
     bladeburner: number;
     casino: number;
     class: number;
@@ -105,13 +105,13 @@ interface HP {
   }
   
   /** @public */
-  interface MoneySources {
+  export interface MoneySources {
     sinceInstall: MoneySource;
     sinceStart: MoneySource;
   }
   
   /** @public */
-  interface Multipliers {
+  export interface Multipliers {
     /** Multiplier to hacking skill */
     hacking: number;
     /** Multiplier to strength skill */
@@ -175,7 +175,7 @@ interface HP {
   }
   
   /** @public */
-  interface TailProperties {
+  export interface TailProperties {
     /** X-coordinate of the log window */
     x: number;
     /** Y-coordinate of the log window */
@@ -204,14 +204,14 @@ interface HP {
    * Use React.createElement to make these.
    * See {@link https://react.dev/reference/react/createElement#creating-an-element-without-jsx | creating an element without jsx} from the official React documentation.
    */
-  interface ReactElement {
+  export interface ReactElement {
     type: string | ((props: any) => ReactElement | null) | (new (props: any) => object);
     props: any;
     key: string | number | null;
   }
   
   /** @public */
-  interface RunningScript {
+  export interface RunningScript {
     /** Arguments the script was called with */
     args: ScriptArg[];
     /**
@@ -276,7 +276,7 @@ interface HP {
   }
   
   /** @public */
-  interface RunOptions {
+  export interface RunOptions {
     /** Number of threads that the script will run with, defaults to 1 */
     threads?: number;
     /** Whether this script is excluded from saves, defaults to false */
@@ -305,7 +305,7 @@ interface HP {
   }
   
   /** @public */
-  interface SpawnOptions extends RunOptions {
+  export interface SpawnOptions extends RunOptions {
     /**
      * Number of milliseconds to delay before spawning script, defaults to 10000 (10s).
      * Must be a non-negative integer. If 0, the script will be spawned synchronously.
@@ -314,7 +314,7 @@ interface HP {
   }
   
   /** @public */
-  interface RecentScript extends RunningScript {
+  export interface RecentScript extends RunningScript {
     /** Timestamp of when the script was killed */
     timeOfDeath: Date;
   }
@@ -323,7 +323,7 @@ interface HP {
    * Data representing the internal values of a crime.
    * @public
    */
-  interface CrimeStats {
+  export interface CrimeStats {
     /** Number representing the difficulty of the crime. Used for success chance calculations */
     difficulty: number;
     /** Amount of karma lost for successfully committing this crime */
@@ -368,7 +368,7 @@ interface HP {
    * Options to affect the behavior of {@link NS.hack | hack}, {@link NS.grow | grow}, and {@link NS.weaken | weaken}.
    * @public
    */
-  interface BasicHGWOptions {
+  export interface BasicHGWOptions {
     /** Number of threads to use for this function.
      * Must be less than or equal to the number of threads the script is running with.
      * Accepts positive non integer values.
@@ -385,7 +385,7 @@ interface HP {
    * Return value of {@link Sleeve.getSleevePurchasableAugs | getSleevePurchasableAugs}
    * @public
    */
-  interface AugmentPair {
+  export interface AugmentPair {
     /** augmentation name */
     name: string;
     /** augmentation cost */
@@ -393,13 +393,13 @@ interface HP {
   }
   
   /** @public */
-  declare enum PositionType {
+  export enum PositionType {
     Long = "L",
     Short = "S",
   }
   
   /** @public */
-  declare enum OrderType {
+  export enum OrderType {
     LimitBuy = "Limit Buy Order",
     LimitSell = "Limit Sell Order",
     StopBuy = "Stop Buy Order",
@@ -410,7 +410,7 @@ interface HP {
    * Value in map of {@link StockOrder}
    * @public
    */
-  interface StockOrderObject {
+  export interface StockOrderObject {
     /** Number of shares */
     shares: number;
     /** Price per share */
@@ -427,13 +427,13 @@ interface HP {
    * Keys are stock symbols, properties are arrays of {@link StockOrderObject}
    * @public
    */
-  interface StockOrder {
+  export interface StockOrder {
     [key: string]: StockOrderObject[];
   }
   
   /** Constants used for the stock market game mechanic.
    * @public */
-  interface StockMarketConstants {
+  export interface StockMarketConstants {
     /** Normal time in ms between stock market updates */
     msPerStockUpdate: number;
     /** Minimum time in ms between stock market updates if there is stored offline/bonus time */
@@ -456,7 +456,7 @@ interface HP {
    * A single process on a server.
    * @public
    */
-  interface ProcessInfo {
+  export interface ProcessInfo {
     /** Script name. */
     filename: string;
     /** Number of threads script is running with */
@@ -473,7 +473,7 @@ interface HP {
    * Hack related multipliers.
    * @public
    */
-  interface HackingMultipliers {
+  export interface HackingMultipliers {
     /** Player's hacking chance multiplier. */
     chance: number;
     /** Player's hacking speed multiplier. */
@@ -488,7 +488,7 @@ interface HP {
    * Hacknet related multipliers.
    * @public
    */
-  interface HacknetMultipliers {
+  export interface HacknetMultipliers {
     /** Player's hacknet production multiplier */
     production: number;
     /** Player's hacknet purchase cost multiplier */
@@ -505,7 +505,7 @@ interface HP {
    * Hacknet node related constants
    * @public
    */
-  interface HacknetNodeConstants {
+  export interface HacknetNodeConstants {
     /** Amount of money gained per level */
     MoneyGainPerLevel: number;
     /** Base cost for a new node */
@@ -536,7 +536,7 @@ interface HP {
    * Hacknet server related constants
    * @public
    */
-  interface HacknetServerConstants {
+  export interface HacknetServerConstants {
     /** Number of hashes calculated per level */
     HashesPerLevel: number;
     /** Base cost for a new server */
@@ -645,7 +645,7 @@ interface HP {
    * All multipliers affecting the difficulty of the current challenge.
    * @public
    */
-  interface BitNodeMultipliers {
+  export interface BitNodeMultipliers {
     /** Influences how quickly the player's agility level (not exp) scales */
     AgilityLevelMultiplier: number;
     /** Influences the base cost to purchase an augmentation. */
@@ -766,7 +766,7 @@ interface HP {
    * Object representing all the values related to a hacknet node.
    * @public
    */
-  interface NodeStats {
+  export interface NodeStats {
     /** Node's name */
     name: string;
     /** Node's level */
@@ -790,7 +790,7 @@ interface HP {
   }
   
   /** @public */
-  interface SourceFileLvl {
+  export interface SourceFileLvl {
     /** The number of the source file */
     n: number;
     /** The level of the source file */
@@ -801,7 +801,7 @@ interface HP {
    * Bladeburner current action.
    * @public
    */
-  interface BladeburnerCurAction {
+  export interface BladeburnerCurAction {
     /** Type of Action */
     type: string;
     /** Name of Action */
@@ -812,7 +812,7 @@ interface HP {
    * Gang general info.
    * @public
    */
-  interface GangGenInfo {
+  export interface GangGenInfo {
     /** Name of faction that the gang belongs to ("Slum Snakes", etc.) */
     faction: string;
     /** Indicating whether or not it's a hacking gang */
@@ -842,7 +842,7 @@ interface HP {
   }
   
   /** @public */
-  interface GangOtherInfoObject {
+  export interface GangOtherInfoObject {
     /** Gang power */
     power: number;
     /** Gang territory, in decimal form */
@@ -850,7 +850,7 @@ interface HP {
   }
   
   /** @public */
-  interface GangOtherInfo {
+  export interface GangOtherInfo {
     [key: string]: GangOtherInfoObject;
   }
   
@@ -858,7 +858,7 @@ interface HP {
    * Object representing data representing a gang member task.
    * @public
    */
-  interface GangTaskStats {
+  export interface GangTaskStats {
     /** Task name */
     name: string;
     /** Task Description */
@@ -895,7 +895,7 @@ interface HP {
    * Object representing data representing a gang member equipment.
    * @public
    */
-  interface EquipmentStats {
+  export interface EquipmentStats {
     /** Strength multiplier */
     str?: number;
     /** Defense multiplier */
@@ -911,7 +911,7 @@ interface HP {
   }
   
   /** @public */
-  interface GangTerritory {
+  export interface GangTerritory {
     /** Money gain impact on task scaling */
     money: number;
     /** Respect gain impact on task scaling */
@@ -921,7 +921,7 @@ interface HP {
   }
   
   /** @public */
-  interface GangMemberInfo {
+  export interface GangMemberInfo {
     /** Name of the gang member */
     name: string;
     /** Currently assigned task */
@@ -1008,7 +1008,7 @@ interface HP {
   }
   
   /** @public */
-  interface GangMemberInstall {
+  export interface GangMemberInstall {
     /** Factor by which the hacking ascension multiplier was decreased (newMult / oldMult) */
     hack: number;
     /** Factor by which the strength ascension multiplier was decreased (newMult / oldMult) */
@@ -1024,7 +1024,7 @@ interface HP {
   }
   
   /** @public */
-  interface GangMemberAscension {
+  export interface GangMemberAscension {
     /** Amount of respect lost from ascending */
     respect: number;
     /** Factor by which the hacking ascension multiplier was increased (newMult / oldMult) */
@@ -3067,7 +3067,7 @@ interface HP {
    *
    * @public
    */
-  declare enum BladeburnerActionType {
+  export enum BladeburnerActionType {
     General = "General",
     Contract = "Contracts",
     Operation = "Operations",
@@ -3079,7 +3079,7 @@ interface HP {
    *
    * @public
    */
-  declare enum BladeburnerGeneralActionName {
+  export enum BladeburnerGeneralActionName {
     Training = "Training",
     FieldAnalysis = "Field Analysis",
     Recruitment = "Recruitment",
@@ -3093,7 +3093,7 @@ interface HP {
    *
    * @public
    */
-  declare enum BladeburnerContractName {
+  export enum BladeburnerContractName {
     Tracking = "Tracking",
     BountyHunter = "Bounty Hunter",
     Retirement = "Retirement",
@@ -3104,7 +3104,7 @@ interface HP {
    *
    * @public
    */
-  declare enum BladeburnerOperationName {
+  export enum BladeburnerOperationName {
     Investigation = "Investigation",
     Undercover = "Undercover Operation",
     Sting = "Sting Operation",
@@ -3118,7 +3118,7 @@ interface HP {
    *
    * @public
    */
-  declare enum BladeburnerBlackOpName {
+  export enum BladeburnerBlackOpName {
     OperationTyphoon = "Operation Typhoon",
     OperationZero = "Operation Zero",
     OperationX = "Operation X",
@@ -3147,7 +3147,7 @@ interface HP {
    *
    * @public
    */
-  declare enum BladeburnerSkillName {
+  export enum BladeburnerSkillName {
     BladesIntuition = "Blade's Intuition",
     Cloak = "Cloak",
     ShortCircuit = "Short-Circuit",
@@ -3176,7 +3176,7 @@ interface HP {
    *
    * @public
    */
-  declare enum SpecialBladeburnerActionTypeForSleeve {
+  export enum SpecialBladeburnerActionTypeForSleeve {
     InfiltrateSynthoids = "Infiltrate Synthoids",
     SupportMainSleeve = "Support main sleeve",
     TakeOnContracts = "Take on contracts",
@@ -4954,7 +4954,7 @@ interface HP {
    * Skills formulas
    * @public
    */
-  interface SkillsFormulas {
+  export interface SkillsFormulas {
     /**
      * Calculate skill level.
      * @param exp - experience for that skill
@@ -4972,7 +4972,7 @@ interface HP {
   }
   
   /** @public */
-  interface WorkStats {
+  export interface WorkStats {
     money: number;
     reputation: number;
     hackExp: number;
@@ -4988,7 +4988,7 @@ interface HP {
    * Work formulas
    * @public
    */
-  interface WorkFormulas {
+  export interface WorkFormulas {
     crimeSuccessChance(person: Person, crimeType: CrimeType | `${CrimeType}`): number;
     /** @returns The WorkStats gained when completing one instance of the specified crime. */
     crimeGains(person: Person, crimeType: CrimeType | `${CrimeType}`): WorkStats;
@@ -5015,7 +5015,7 @@ interface HP {
    * Reputation formulas
    * @public
    */
-  interface ReputationFormulas {
+  export interface ReputationFormulas {
     /**
      * Calculate the total required amount of faction reputation to reach a target favor.
      * @param favor - target faction favor.
@@ -5042,7 +5042,7 @@ interface HP {
    * Hacking formulas
    * @public
    */
-  interface HackingFormulas {
+  export interface HackingFormulas {
     /**
      * Calculate hack chance.
      * (Ex: 0.25 would indicate a 25% chance of success.)
@@ -5149,7 +5149,7 @@ interface HP {
    * Hacknet Node formulas
    * @public
    */
-  interface HacknetNodesFormulas {
+  export interface HacknetNodesFormulas {
     /**
      * Calculate money gain rate.
      * @param level - level of the node.
@@ -5201,7 +5201,7 @@ interface HP {
    * Hacknet Server formulas
    * @public
    */
-  interface HacknetServersFormulas {
+  export interface HacknetServersFormulas {
     /**
      * Calculate hash gain rate.
      * @param level - level of the server.
@@ -5268,7 +5268,7 @@ interface HP {
    * Gang formulas
    * @public
    */
-  interface GangFormulas {
+  export interface GangFormulas {
     /**
      * Calculate the wanted penalty.
      * @param gang - Gang info from {@link Gang.getGangInformation | getGangInformation}
@@ -5319,7 +5319,7 @@ interface HP {
    * Bladeburner formulas
    * @public
    */
-  interface BladeburnerFormulas {
+  export interface BladeburnerFormulas {
     /**
      * Calculate the number of times that you can upgrade a skill.
      *
@@ -5360,7 +5360,7 @@ interface HP {
   }
   
   /** @public */
-  interface Fragment {
+  export interface Fragment {
     id: number;
     shape: boolean[][];
     type: number;
@@ -5370,7 +5370,7 @@ interface HP {
   }
   
   /** @public */
-  interface ActiveFragment {
+  export interface ActiveFragment {
     id: number;
     highestCharge: number;
     numCharge: number;
@@ -5383,7 +5383,7 @@ interface HP {
    * Stanek's Gift API.
    * @public
    */
-  interface Stanek {
+  export interface Stanek {
     /**
      * Stanek's Gift width.
      * @remarks
@@ -5492,20 +5492,20 @@ interface HP {
   }
   
   /** @public */
-  interface InfiltrationReward {
+  export interface InfiltrationReward {
     tradeRep: number;
     sellCash: number;
     SoARep: number;
   }
   
   /** @public */
-  interface ILocation {
+  export interface ILocation {
     city: CityName;
     name: LocationName;
   }
   
   /** @public */
-  interface InfiltrationLocation {
+  export interface InfiltrationLocation {
     location: ILocation;
     reward: InfiltrationReward;
     difficulty: number;
@@ -5517,7 +5517,7 @@ interface HP {
    * Infiltration API.
    * @public
    */
-  interface Infiltration {
+  export interface Infiltration {
     /**
      * Get all locations that can be infiltrated.
      * @remarks
@@ -5537,10 +5537,10 @@ interface HP {
   }
   
   /**
-   * User Interface API.
+   * User export interface API.
    * @public
    */
-  interface UserInterface {
+  export interface UserInterface {
     /**
      * Get the current window size
      * @remarks
@@ -5709,7 +5709,7 @@ interface HP {
     readonly corporation: Corporation;
   
     /**
-     * Namespace for user interface functions.
+     * Namespace for user export interface functions.
      * @remarks RAM cost: 0 GB
      */
     readonly ui: UserInterface;
@@ -6168,7 +6168,7 @@ interface HP {
      *
      * Logging can be disabled for all functions by passing `ALL` as the argument.
      *
-     * For specific interfaces, use the form "namespace.functionName". (e.g. "ui.setTheme")
+     * For specific export interfaces, use the form "namespace.functionName". (e.g. "ui.setTheme")
      *
      * @example
      * ```js
@@ -6188,7 +6188,7 @@ interface HP {
      *
      * Logging can be enabled for all functions by passing `ALL` as the argument.
      *
-     * For specific interfaces, use the form "namespace.functionName". (e.g. "ui.setTheme")
+     * For specific export interfaces, use the form "namespace.functionName". (e.g. "ui.setTheme")
      *
      * @example
      * ```js
@@ -7891,7 +7891,7 @@ interface HP {
   
   // BASE ENUMS
   /** @public */
-  declare enum ToastVariant {
+  export enum ToastVariant {
     SUCCESS = "success",
     WARNING = "warning",
     ERROR = "error",
@@ -7899,7 +7899,7 @@ interface HP {
   }
   
   /** @public */
-  declare enum CrimeType {
+  export enum CrimeType {
     shoplift = "Shoplift",
     robStore = "Rob Store",
     mug = "Mug",
@@ -7915,14 +7915,14 @@ interface HP {
   }
   
   /** @public */
-  declare enum FactionWorkType {
+  export enum FactionWorkType {
     hacking = "hacking",
     field = "field",
     security = "security",
   }
   
   /** @public */
-  declare enum UniversityClassType {
+  export enum UniversityClassType {
     computerScience = "Computer Science",
     dataStructures = "Data Structures",
     networks = "Networks",
@@ -7932,7 +7932,7 @@ interface HP {
   }
   
   /** @public */
-  declare enum GymType {
+  export enum GymType {
     strength = "str",
     defense = "def",
     dexterity = "dex",
@@ -7940,7 +7940,7 @@ interface HP {
   }
   
   /** @public */
-  declare enum JobName {
+  export enum JobName {
     software0 = "Software Engineering Intern",
     software1 = "Junior Software Engineer",
     software2 = "Senior Software Engineer",
@@ -7980,7 +7980,7 @@ interface HP {
   }
   
   /** @public */
-  declare enum JobField {
+  export enum JobField {
     software = "Software",
     softwareConsultant = "Software Consultant",
     it = "IT",
@@ -8030,7 +8030,7 @@ interface HP {
   
   /** Names of all cities
    * @public */
-  declare enum CityName {
+  export enum CityName {
     Aevum = "Aevum",
     Chongqing = "Chongqing",
     Sector12 = "Sector-12",
@@ -8041,7 +8041,7 @@ interface HP {
   
   /** Names of all locations
    * @public */
-  declare enum LocationName {
+  export enum LocationName {
     AevumAeroCorp = "AeroCorp",
     AevumBachmanAndAssociates = "Bachman & Associates",
     AevumClarkeIncorporated = "Clarke Incorporated",
@@ -8112,7 +8112,7 @@ interface HP {
    *
    * @public
    */
-  declare enum UniversityLocationName {
+  export enum UniversityLocationName {
     AevumSummitUniversity = LocationName.AevumSummitUniversity,
     Sector12RothmanUniversity = LocationName.Sector12RothmanUniversity,
     VolhavenZBInstituteOfTechnology = LocationName.VolhavenZBInstituteOfTechnology,
@@ -8123,7 +8123,7 @@ interface HP {
    *
    * @public
    */
-  declare enum GymLocationName {
+  export enum GymLocationName {
     AevumCrushFitnessGym = LocationName.AevumCrushFitnessGym,
     AevumSnapFitnessGym = LocationName.AevumSnapFitnessGym,
     Sector12IronGym = LocationName.Sector12IronGym,
@@ -8133,7 +8133,7 @@ interface HP {
   
   /** Names of all companies
    * @public */
-  declare enum CompanyName {
+  export enum CompanyName {
     ECorp = "ECorp",
     MegaCorp = "MegaCorp",
     BachmanAndAssociates = "Bachman & Associates",
@@ -9008,7 +9008,7 @@ interface HP {
   
   /** Product rating information
    *  @public */
-  interface CorpProductData {
+  export interface CorpProductData {
     /** Name of the product */
     name: string;
     /** Verb used to describe creation of the product */
@@ -9028,7 +9028,7 @@ interface HP {
   
   /** Data for an individual industry
    *  @public */
-  interface CorpIndustryData {
+  export interface CorpIndustryData {
     startingCost: number;
     description: string;
     product?: CorpProductData;
@@ -9058,7 +9058,7 @@ interface HP {
    * General info about a corporation
    * @public
    */
-  interface CorporationInfo {
+  export interface CorporationInfo {
     /** Name of the corporation */
     name: string;
     /** Funds available */
@@ -9109,7 +9109,7 @@ interface HP {
    * Corporation related constants
    * @public
    */
-  interface CorpConstants {
+  export interface CorpConstants {
     /** Names of all corporation game states */
     stateNames: CorpStateName[];
     /** Names of all employee positions */
@@ -9230,7 +9230,7 @@ interface HP {
    * Corporation material information
    * @public
    */
-  interface CorpMaterialConstantData {
+  export interface CorpMaterialConstantData {
     /** Name of the material */
     name: string;
     /** Size of the material */
@@ -9249,7 +9249,7 @@ interface HP {
    * Corporation industry information
    * @public
    */
-  interface IndustryData {
+  export interface IndustryData {
     /** Industry type */
     type: CorpIndustryName;
     /** Cost to make a new division of this industry type */
@@ -9270,7 +9270,7 @@ interface HP {
    * Product in a warehouse
    * @public
    */
-  interface Product {
+  export interface Product {
     /** Name of the product */
     name: string;
     /** Demand for the product, only present if "Market Research - Demand" unlocked */
@@ -9316,7 +9316,7 @@ interface HP {
    * Material in a warehouse
    * @public
    */
-  interface Material {
+  export interface Material {
     /** Name of the material */
     name: CorpMaterialName;
     /** Amount of material  */
@@ -9349,7 +9349,7 @@ interface HP {
    * Export order for a material
    * @public
    */
-  interface Export {
+  export interface Export {
     /** Division the material is being exported to */
     division: string;
     /** City the material is being exported to */
@@ -9362,7 +9362,7 @@ interface HP {
    * Warehouse for a division in a city
    * @public
    */
-  interface Warehouse {
+  export interface Warehouse {
     /** Amount of size upgrade bought */
     level: number;
     /** City in which the warehouse is located */
@@ -9406,7 +9406,7 @@ interface HP {
    * Corporation division
    * @public
    */
-  interface Division {
+  export interface Division {
     /** Name of the division */
     name: string;
     /** Type of division, like Agriculture */
@@ -9443,7 +9443,7 @@ interface HP {
    * Corporation investment offer
    * @public
    */
-  interface InvestmentOffer {
+  export interface InvestmentOffer {
     /** Amount of funds you will get from this investment */
     funds: number;
     /** Amount of share you will give in exchange for this investment */
@@ -9453,10 +9453,10 @@ interface HP {
   }
   
   /**
-   * Interface Theme
+   * export interface Theme
    * @public
    */
-  interface UserInterfaceTheme {
+  export interface UserInterfaceTheme {
     [key: string]: string | undefined;
     primarylight: string;
     primary: string;
@@ -9494,10 +9494,10 @@ interface HP {
   }
   
   /**
-   * Interface Styles
+   * export interface Styles
    * @public
    */
-  interface IStyleSettings {
+  export interface IStyleSettings {
     fontFamily: string;
     lineHeight: number;
   }
@@ -9506,7 +9506,7 @@ interface HP {
    * Game Information
    * @public
    */
-  interface GameInfo {
+  export interface GameInfo {
     version: string;
     commit: string;
     platform: string;
@@ -9516,7 +9516,7 @@ interface HP {
    * Used for autocompletion
    * @public
    */
-  interface AutocompleteData {
+  export interface AutocompleteData {
     /** All server hostnames */
     servers: string[];
     /** All scripts on the current server */
@@ -9539,7 +9539,7 @@ interface HP {
    * Player must have at least this much money.
    * @public
    */
-  interface MoneyRequirement {
+  export interface MoneyRequirement {
     type: "money";
     money: number;
   }
@@ -9547,7 +9547,7 @@ interface HP {
    * Player must have each listed skill at least this level.
    * @public
    */
-  interface SkillRequirement {
+  export interface SkillRequirement {
     type: "skills";
     skills: Partial<Skills>;
   }
@@ -9555,7 +9555,7 @@ interface HP {
    * Player must have less than this much karma.
    * @public
    */
-  interface KarmaRequirement {
+  export interface KarmaRequirement {
     type: "karma";
     karma: number;
   }
@@ -9563,7 +9563,7 @@ interface HP {
    * Player must have killed at least this many people.
    * @public
    */
-  interface PeopleKilledRequirement {
+  export interface PeopleKilledRequirement {
     type: "numPeopleKilled";
     numPeopleKilled: number;
   }
@@ -9571,7 +9571,7 @@ interface HP {
    * Player must have a specific Literature or Message file on their home computer.
    * @public
    */
-  interface FileRequirement {
+  export interface FileRequirement {
     type: "file";
     file: string;
   }
@@ -9580,7 +9580,7 @@ interface HP {
    * Player must have no augmentations installed (if zero).
    * @public
    */
-  interface NumAugmentationsRequirement {
+  export interface NumAugmentationsRequirement {
     type: "numAugmentations";
     numAugmentations: number;
   }
@@ -9588,7 +9588,7 @@ interface HP {
    * Player must be working for this company.
    * @public
    */
-  interface EmployedByRequirement {
+  export interface EmployedByRequirement {
     type: "employedBy";
     company: CompanyName;
   }
@@ -9596,7 +9596,7 @@ interface HP {
    * Player must have at least this much reputation with this company.
    * @public
    */
-  interface CompanyReputationRequirement {
+  export interface CompanyReputationRequirement {
     type: "companyReputation";
     company: CompanyName;
     reputation: number;
@@ -9605,7 +9605,7 @@ interface HP {
    * Player must have this job title at some company.
    * @public
    */
-  interface JobTitleRequirement {
+  export interface JobTitleRequirement {
     type: "jobTitle";
     jobTitle: JobName;
   }
@@ -9613,7 +9613,7 @@ interface HP {
    * Player must be located in this city.
    * @public
    */
-  interface CityRequirement {
+  export interface CityRequirement {
     type: "city";
     city: CityName;
   }
@@ -9621,7 +9621,7 @@ interface HP {
    * Player must be at this location within a city.
    * @public
    */
-  interface LocationRequirement {
+  export interface LocationRequirement {
     type: "location";
     location: LocationName;
   }
@@ -9629,7 +9629,7 @@ interface HP {
    * Player must have installed a backdoor on this server.
    * @public
    */
-  interface BackdoorRequirement {
+  export interface BackdoorRequirement {
     type: "backdoorInstalled";
     server: string;
   }
@@ -9637,7 +9637,7 @@ interface HP {
    * Player's Hacknet devices must have at least this much total RAM.
    * @public
    */
-  interface HacknetRAMRequirement {
+  export interface HacknetRAMRequirement {
     type: "hacknetRAM";
     hacknetRAM: number;
   }
@@ -9645,7 +9645,7 @@ interface HP {
    * Player's Hacknet devices must have at least this many total cores.
    * @public
    */
-  interface HacknetCoresRequirement {
+  export interface HacknetCoresRequirement {
     type: "hacknetCores";
     hacknetCores: number;
   }
@@ -9653,7 +9653,7 @@ interface HP {
    * Player's Hacknet devices must have at least this many total levels.
    * @public
    */
-  interface HacknetLevelsRequirement {
+  export interface HacknetLevelsRequirement {
     type: "hacknetLevels";
     hacknetLevels: number;
   }
@@ -9661,7 +9661,7 @@ interface HP {
    * Player must be located in this BitNode.
    * @public
    */
-  interface BitNodeRequirement {
+  export interface BitNodeRequirement {
     type: "bitNodeN";
     bitNodeN: number;
   }
@@ -9669,7 +9669,7 @@ interface HP {
    * Player must have this Source File.
    * @public
    */
-  interface SourceFileRequirement {
+  export interface SourceFileRequirement {
     type: "sourceFile";
     sourceFile: number;
   }
@@ -9677,7 +9677,7 @@ interface HP {
    * Player must have at least this rank in the Bladeburner Division.
    * @public
    */
-  interface BladeburnerRankRequirement {
+  export interface BladeburnerRankRequirement {
     type: "bladeburnerRank";
     bladeburnerRank: number;
   }
@@ -9685,7 +9685,7 @@ interface HP {
    * Player must have completed this many infiltrations.
    * @public
    */
-  interface NumInfiltrationsRequirement {
+  export interface NumInfiltrationsRequirement {
     type: "numInfiltrations";
     numInfiltrations: number;
   }
@@ -9693,7 +9693,7 @@ interface HP {
    * The sub-condition must not be satisfied.
    * @public
    */
-  interface NotRequirement {
+  export interface NotRequirement {
     type: "not";
     condition: PlayerRequirement;
   }
@@ -9701,7 +9701,7 @@ interface HP {
    * At least one sub-condition must be satisfied.
    * @public
    */
-  interface SomeRequirement {
+  export interface SomeRequirement {
     type: "someCondition";
     conditions: PlayerRequirement[];
   }
@@ -9709,13 +9709,13 @@ interface HP {
    * All sub-conditions must be satisfied.
    * @public
    */
-  interface EveryRequirement {
+  export interface EveryRequirement {
     type: "everyCondition";
     conditions: PlayerRequirement[];
   }
   
   /**
-   * Structured interface to requirements for joining a faction or company.
+   * Structured export interface to requirements for joining a faction or company.
    * For fields with numerical value \> 0, the player must have at least this value.
    * For fields with numerical value \<= 0, the player must have at most this value.
    * For "not", the sub-condition must be failed instead of passed.

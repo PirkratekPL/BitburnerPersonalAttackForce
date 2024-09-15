@@ -1,4 +1,13 @@
 {
+    "include": [
+        "./src/bin/**/*.ts",
+        "./src/bin/bitburner.ts"
+    ],
+    "typeAcquisition": {
+        "include": [
+            "./src/bin/bitburner.ts"
+        ]
+    },
     "compilerOptions": {
         "jsx": "react",
         "target": "ES2021",
@@ -7,14 +16,15 @@
         "baseUrl": "src/",
         "outDir": "build/",
         "paths": {
-            "/bin/*": ["/bin/*"]
+            "/bitburner": ["./bin/bitburner.ts"]
         },
         "moduleResolution": "node",
         "strictNullChecks": true,
-        "strictPropertyInitialization": true,
+        "strictPropertyInitialization": true,"declaration": false,
         "strictBindCallApply": true,
         "allowJs": true,
         "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true
-    }
+        "esModuleInterop": true,
+        "preserveConstEnums": true
+        }
 }
