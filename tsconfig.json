@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "jsx": "react",
+        "target": "ES2021",
+        "module": "ESNext",
+        "rootDir": "src/",
+        "baseUrl": "src/",
+        "outDir": "build/",
+        "paths": {
+            "/bin/*": ["/bin/*"]
+        },
+        "moduleResolution": "node",
+        "strictNullChecks": true,
+        "strictPropertyInitialization": true,
+        "strictBindCallApply": true,
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true
+    }
+}

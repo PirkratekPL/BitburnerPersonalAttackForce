@@ -1,0 +1,22 @@
+{
+  "name": "BitburnerPersonalAttackForce",
+  "version": "1.0.0",
+  "description": "Set of typescript scripts that i used to defeat the evil developers of bitburner.",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf build && tsc",
+    "dev": "rimraf build && tsc -w"
+  },
+  "keywords": [
+    "bitburner"
+  ],
+  "author": "pirkratek",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "rimraf": "^6.0.1",
+    "tslib": "^2.7.0",
+    "typescript": "^5.6.2"
+  }
+}
