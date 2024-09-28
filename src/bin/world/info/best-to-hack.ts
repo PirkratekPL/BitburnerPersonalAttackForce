@@ -9,7 +9,7 @@ export async function main(ns: NS) {
     var filtered = details.filter((x) => filterPredicate(x, playerHackLevel)).sort(sortFunc);
     for (let i = 0; i < 10 && i < filtered.length; ++i) {
         var server = filtered[i];
-        ns.tprintRaw(`${server.serverName} || hackLevel: ${server.requiredHackingSkill} || minDiffi: ${server.minDifficulty} || maxMoney: ${server.moneyMax} || coeff: ${server.moneyMax / server.requiredHackingSkill}`);
+        ns.tprintRaw(`${server.serverName} || hackLevel: ${server.requiredHackingSkill} || minDiffi: ${server.minDifficulty} || maxMoney: ${server.moneyMax} || coeff: ${calcCoefficient(server)}`);
     }
 }
 
@@ -18,5 +18,9 @@ function filterPredicate(server: ServerDetails, playerHackLevel: number): boolea
 }
 
 function sortFunc(a: ServerDetails, b: ServerDetails): number {
-    return (b.moneyMax / b.minDifficulty) - (a.moneyMax / a.minDifficulty);
+    return calcCoefficient(b) - calcCoefficient(a);
+}
+
+function calcCoefficient(server: ServerDetails): number {
+    return server.moneyMax / server.minDifficulty;
 }
