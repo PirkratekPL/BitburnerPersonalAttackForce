@@ -1,7 +1,6 @@
 import { NS } from '../../bitburner';
 import { StorageKeys } from '../../db/storage-keys';
 import { StorageUtils } from '../../db/storage-utils';
-import { PortUtils } from '../../ports/port-utils';
 import { ServerDetails } from '../server-detailed-scanner';
 
 export async function main(ns: NS) {
@@ -10,7 +9,7 @@ export async function main(ns: NS) {
     var filtered = details.filter((x) => filterPredicate(x, playerHackLevel)).sort(sortFunc);
     for (let i = 0; i < 10 && i < filtered.length; ++i) {
         var server = filtered[i];
-        ns.tprintRaw(`${server.serverName} || hackLevel: ${server.requiredHackingSkill} || maxMoney: ${server.moneyMax} || coeff: ${server.moneyMax / server.requiredHackingSkill}`);
+        ns.tprintRaw(`${server.serverName} || hackLevel: ${server.requiredHackingSkill} || minDiffi: ${server.minDifficulty} || maxMoney: ${server.moneyMax} || coeff: ${server.moneyMax / server.requiredHackingSkill}`);
     }
 }
 
