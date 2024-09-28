@@ -17,7 +17,10 @@ export abstract class StorageUtils {
         }
     }
 
-    public static async GetObject(ns: NS, key: string): Promise<any | null> {
+    public static async GetObject(ns: NS, key: string): Promise<any> {
+        if (!key) {
+            throw new Error('Key was not defined or empty ${command.key}');
+        }
         var success = await PortUtils.ResilientTryWriteToPort(ns, CONSTS.storageInputPortNumber, <StorageCommand>{
             command: StorageCommandEnum.GET,
             key: key,

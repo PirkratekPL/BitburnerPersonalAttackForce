@@ -22,10 +22,24 @@ export async function main(ns: NS) {
 function init(ns: NS) {
     thisNS = ns;
     storage = {};
+    loadFromFile();
     ns.clearPort(CONSTS.storageOutputPortNumber);
     ns.disableLog('asleep');
     ns.atExit(() => ns.closeTail());
     ns.tail();
+}
+
+function saveToFile() {
+    var ns = getNS();
+    var json = JSON.stringify(storage);
+    ns.write('/db/storage.json', json, 'w');
+}
+
+function loadFromFile() {
+    var ns = getNS();
+    var data = ns.read('/db/storage.json');
+    storage = JSON.parse(data) as { [key: string]: any };
+    ns.print(`Loaded with ${Object.keys(storage).length} keys`);
 }
 
 async function readWriteLoop(): Promise<never> {
@@ -46,7 +60,7 @@ async function readWriteLoop(): Promise<never> {
 
 async function processCommand(command: StorageCommand): Promise<void> {
     if (!command.key) {
-        throw new Error('Key was not defined or empty');
+        throw new Error('Key was not defined or empty ${command.key}');
     }
     var ns = getNS();
     ns.print(command)
@@ -54,6 +68,7 @@ async function processCommand(command: StorageCommand): Promise<void> {
     switch (command.command) {
         case StorageCommandEnum.PUT:
             storagePutObject(command);
+            saveToFile();
             break;
 
         case StorageCommandEnum.GET:
@@ -62,6 +77,7 @@ async function processCommand(command: StorageCommand): Promise<void> {
 
         case StorageCommandEnum.DEL:
             storageDeleteObject(command);
+            saveToFile();
             break;
 
         default:
@@ -100,4 +116,3 @@ function TryRemoveStuckResult() {
         handle.read();
     }
 }
-

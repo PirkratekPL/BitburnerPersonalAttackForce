@@ -6,5 +6,5 @@ export async function main(ns: NS) {
         ['key', ''],
     ]);
     var key = flags['key'] as string;
-    ns.tprint(await StorageUtils.GetObject(ns, key));
+    ns.tprint((await StorageUtils.GetObject(ns, key)));
 }

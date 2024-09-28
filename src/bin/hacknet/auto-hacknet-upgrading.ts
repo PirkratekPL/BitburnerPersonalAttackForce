@@ -6,7 +6,7 @@ const settings = {
     maxNodes: 30,
     maxNodeLevel: 200,
     maxNodeRam: 64,
-    maxNodeCores: 8,
+    maxNodeCores: 16,
 }
 var thisNS: NS;
 function getNS(): NS {
