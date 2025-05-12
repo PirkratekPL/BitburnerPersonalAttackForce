@@ -6,4 +6,12 @@ export const mapOfRam = {
     'httpworm': 0.05,
     'sqlinject': 0.05,
     'nuke': 0.05,
+    'getServerMoneyAvailable': 0.1,
+    'getServerUsedRam': 0.05,
+    'getServerSecurityLevel': 0.1,
+    'getHackTime': 0.05,
+    'hasRootAccess': 0.05,
+    'getPurchasedServers': 1.05,
+    'ps': 0.2,
+    'getScriptRam': 0.1,
 }

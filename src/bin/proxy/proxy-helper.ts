@@ -4,7 +4,7 @@ import { ProxyResult } from './proxy-result.model';
 
 export async function pFunc<T>(ns: NS, func: string, ...args: ScriptArg[]): Promise<T> {
     var ownPID = ns.pid;
-    var pid = ns.exec('/bin/proxy/proxy-script.js', 'home', { threads:1 }, func, ownPID, ...args);
+    var pid = ns.exec('/bin/proxy/proxy-script.js', 'home', { threads:1, temporary: true }, func, ownPID, ...args);
     var handle = ns.getPortHandle(CONSTS.proxyScriptOutputPort);
     var tries = 0;
     await ns.asleep(5);

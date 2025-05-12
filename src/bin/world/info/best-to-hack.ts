@@ -9,7 +9,7 @@ export async function main(ns: NS) {
     var filtered = details.filter((x) => filterPredicate(x, playerHackLevel)).sort(sortFunc);
     for (let i = 0; i < 10 && i < filtered.length; ++i) {
         var server = filtered[i];
-        ns.tprintRaw(`${server.serverName} || hackLevel: ${server.requiredHackingSkill} || minDiffi: ${server.minDifficulty} || maxMoney: ${server.moneyMax} || coeff: ${calcCoefficient(server)}`);
+        ns.tprintRaw(`${server.serverName} || hackLevel: ${server.requiredHackingSkill} || minDiffi: ${server.minDifficulty} || maxMoney: ${ns.formatNumber(server.moneyMax)} || coeff: ${calcCoefficient(server)}`);
     }
 }
 

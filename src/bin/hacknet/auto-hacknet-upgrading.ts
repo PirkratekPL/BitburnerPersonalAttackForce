@@ -1,4 +1,4 @@
-import { NS, ToastVariant } from '../bitburner';
+import { NS } from '../bitburner';
 import { BestGainPerDollarSpendUpgrade, UpgradeTypeEnum } from './best-gain-per-dollar-upgrade-choice.model';
 
 const settings = {
@@ -20,7 +20,7 @@ function getNS(): NS {
 export async function main(ns: NS) {
     init(ns);
     await upgradeLoop();
-    ns.toast('AutoHacknet Completed', ToastVariant.SUCCESS, 5000);
+    ns.toast('AutoHacknet Completed', "success", 5000);
 }
 
 function init(ns: NS) {

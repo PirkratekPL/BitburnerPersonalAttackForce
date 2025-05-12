@@ -1,6 +1,7 @@
 {
     "include": [
         "./src/bin/**/*.ts",
+        "./src/bin/**/*.tsx",
         "./src/bin/bitburner.ts"
     ],
     "typeAcquisition": {
@@ -16,15 +17,16 @@
         "baseUrl": "src/",
         "outDir": "build/",
         "paths": {
-            "/bitburner": ["./bin/bitburner.ts"]
+            "/bitburner": ["./bin/bitburner.ts" ]
         },
         "moduleResolution": "node",
         "strictNullChecks": true,
-        "strictPropertyInitialization": true,"declaration": false,
+        "strictPropertyInitialization": true,
+        "declaration": false,
         "strictBindCallApply": true,
         "allowJs": true,
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "preserveConstEnums": true
-        }
+    }
 }
